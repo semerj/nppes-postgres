@@ -4,9 +4,9 @@ Quickly load National Provider Identifier (NPI) CSV data into Postgres
 
 ## NPI
 
-### Download Latest Data
+### Download Latest NPI Data
 
-Download [Full Replacement Monthly NPI File](http://download.cms.gov/nppes/NPI_Files.html) ~ 600MB
+[Full Replacement Monthly NPI File](http://download.cms.gov/nppes/NPI_Files.html) ~ 600MB
 
 ### Clean NPI CSV File
 
@@ -23,7 +23,7 @@ $ createdb -O 'username' npi
 $ psql -U username -d npi -a -f create_npi_db.psql
 ```
 
-### Load Data
+### Load NPI Data
 
 ```sql
 COPY npi
@@ -35,15 +35,14 @@ NULL AS '';
 
 ## Taxonomy
 
-### Add Provider Taxonomy Data
+### Download Provider Taxonomy Data
 
-Download [Health Care Provider Taxonomy Code Set CSV](http://www.nucc.org/index.php?option=com_content&view=article&id=107&Itemid=132)
+[Health Care Provider Taxonomy Code Set CSV](http://www.nucc.org/index.php?option=com_content&view=article&id=107&Itemid=132)
 
-### Create `taxonomy` Database
+### Create `taxonomy` Table in `npi` Database
 
 ```sh
-$ createdb -O 'username' taxonomy
-$ psql -U username -d taxonomy -a -f create_taxonomy_db.psql
+$ psql -U username -d npi -a -f create_taxonomy_db.psql
 ```
 
 ### Clean Taxonomy Data
