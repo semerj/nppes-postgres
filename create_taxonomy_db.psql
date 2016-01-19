@@ -1,0 +1,9 @@
+CREATE TABLE taxonomy
+(
+  Code varchar(10),
+  Grouping varchar,
+  Classification varchar,
+  Specialization varchar,
+  Definition text,
+  Notes text
+);
