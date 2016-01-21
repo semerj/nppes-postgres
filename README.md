@@ -24,6 +24,6 @@ $ iconv -c -t utf8 nucc_taxonomy_160.csv | csvformat -D "|" > taxonomy.pipe
 Make sure to change the paths to datasets in `create_npi_db.psql`
 
 ```sh
-$ createdb -O '<username' npi
+$ createdb -O 'username' npi
 $ psql -U username -d npi -a -f create_npi_db.psql
 ```
