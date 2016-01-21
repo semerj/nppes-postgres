@@ -330,3 +330,28 @@ CREATE TABLE npi
   Healthcare_Provider_Taxonomy_Group_14 varchar(70),
   Healthcare_Provider_Taxonomy_Group_15 varchar(70)
 );
+
+
+CREATE TABLE taxonomy
+(
+  Code varchar(10),
+  Grouping varchar,
+  Classification varchar,
+  Specialization varchar,
+  Definition text,
+  Notes text
+);
+
+
+COPY npi
+FROM '/path/to/data/npi.csv'
+WITH CSV HEADER
+DELIMITER AS ','
+NULL AS '';
+
+
+COPY taxonomy
+FROM '/path/to/data/taxonomy.pipe'
+WITH CSV HEADER
+DELIMITER AS '|'
+NULL AS '';
