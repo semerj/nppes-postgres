@@ -1,3 +1,9 @@
+#!/bin/sh
+
+# ./create_npi_db.sh [USERNAME] [DATABASE] [NPI-DATA] [TAXONOMY-DATA]
+
+psql -U $1 -d $2 << EOF
+DROP TABLE IF EXISTS npi;
 CREATE TABLE npi
 (
   NPI integer,
@@ -332,6 +338,7 @@ CREATE TABLE npi
 );
 
 
+DROP TABLE IF EXISTS taxonomy;
 CREATE TABLE taxonomy
 (
   Code varchar(10),
@@ -344,14 +351,14 @@ CREATE TABLE taxonomy
 
 
 COPY npi
-FROM '/path/to/data/npi.csv'
+FROM '$3'
 WITH CSV HEADER
 DELIMITER AS ','
 NULL AS '';
 
 
 COPY taxonomy
-FROM '/path/to/data/taxonomy.pipe'
+FROM '$4'
 WITH CSV HEADER
-DELIMITER AS '|'
-NULL AS '';
+DELIMITER AS E'\t'
+EOF

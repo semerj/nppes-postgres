@@ -15,15 +15,13 @@ Quickly load National Provider Identifier (NPI) and Health Care Provider Taxonom
 # Replace empty "" integer fields in NPI CSV file
 $ sed 's/""//g' npidata_20050523-20160110.csv > npi.csv
 
-# Convert taxonomy data to utf-8 and delimiter to "|"
-$ iconv -c -t utf8 nucc_taxonomy_160.csv | csvformat -D "|" > taxonomy.pipe
+# Convert taxonomy data to utf-8 and tab delimited
+$ iconv -c -t utf8 nucc_taxonomy_160.csv | csvformat -T > taxonomy.tab
 ```
 
-### Create `npi` Database
-
-Make sure to change the paths to datasets in `create_npi_db.psql`
+### Create `npi` Database and Import Data
 
 ```sh
-$ createdb -O 'username' npi
-$ psql -U username -d npi -a -f create_npi_db.psql
+$ createdb -O [USERNAME] [DATABASE]
+$ ./create_npi_db.sh user npi /full/path/data/npi.csv /full/path/taxonomy.tab
 ```
