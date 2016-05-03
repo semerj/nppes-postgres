@@ -22,6 +22,6 @@ $ iconv -c -t utf8 nucc_taxonomy_160.csv | csvformat -T > taxonomy.tab
 ### Create `npi` Database and Import Data
 
 ```sh
-$ createdb -O [USERNAME] [DATABASE]
-$ ./create_npi_db.sh user npi /full/path/data/npi.csv /full/path/taxonomy.tab
+$ createdb -O [USERNAME] [DBNAME]
+$ ./create_npi_db.sh [USERNAME] [DBNAME] /full/path/npi.csv /full/path/taxonomy.tab
 ```
